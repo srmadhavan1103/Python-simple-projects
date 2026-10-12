@@ -32,21 +32,46 @@ class TodoList:
             task.display(number)
 
     def complete_task(self):
-        if not self.tasks:
+        if not self.task:
             print("No tasks available.")
             return
         self.view_tasks()
 
         try:
             number =int(input("\nEnter task number to mark as completed: "))
-            if 1<=number<=len(self.tasks):
-                if self.tasks[number -1].completed:
+            if 1<=number<=len(self.task):
+                if self.task[number -1].completed:
                     print("Task is already completed.")
                 else:
-                    self.tasks[number -1].mark_completed()
+                    self.task[number -1].mark_completed()
                     print("Task marked as completed!")
             else:
                 print("Invalid task number.")
         except ValueError:
             print("Please enter a valid number.")
+        def main():
+            todo_list=TodoList()
+            self.task=[]
+            while True:
+                print(" TO-DO LIST APP ")
+                print("1. Add Task")
+                print("2. View Task")
+                print("3. Mark Task as Completed")
+                print("4. Exit")
+                choice=input("Enter your choice: ")
+                if choice=="1":
+                    todo_list.add_task()
+                elif choice=="2":
+                    todo_list.view_tasks()
+                elif choice=="3":
+                    todo_list.complete_task()
+                elif choice=="4":
+                    print("Thank you for using the To-Do List App!")
+                    break
+                else:
+                    print("Invalid choice. Please try again.")
+        if __name__ == "__main__":
+            main()
+                
+
         
